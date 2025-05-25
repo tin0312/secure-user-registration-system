@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="icon" href="./assets/icon/registration-icon.png" type="image/x-icon" />
+  <title>Expat Tax - Sign up</title>
+</head>
+
+<body>
+  <main class="container">
+    <h1 id="signup-form-title" class="fade-in">Sign Up</h1>
+    <p id="form-message" class="form-message hidden" role="alert" aria-live="assertive"></p>
+    <form class="fade-in fade-in-delayed" aria-labelledby="signup-form-title">
+      <label for="account-types">Account Type<span class="required">*</span></label>
+      <select name="account-types" id="account-types" required>
+        <option value="" disabled selected>Select your account type</option>
+        <option value="individual">Individual</option>
+        <option value="company">Company</option>
+      </select>
+
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" />
+      <span class="input-feedback" id="username-feedback"></span>
+
+      <label for="password">Password<span class="required">*</span></label>
+      <input type="password" id="password" name="password" autocomplete="new-password" aria-describedby="password-help"
+        required />
+      <small id="password-help" class="help-text">
+        <ul class="password-checklist">
+          <li id="check-length">❌ At least 8 characters</li>
+          <li id="check-lower">❌ One lowercase letter</li>
+          <li id="check-upper">❌ One uppercase letter</li>
+          <li id="check-number">❌ One number</li>
+          <li id="check-special">❌ One special character</li>
+        </ul>
+      </small>
+      <label for="confirm-password">Confirm Password<span class="required">*</span></label>
+      <input type="password" id="confirm-password" name="confirm-password" required />
+      <span class="input-feedback" id="confirm-password-feedback"></span>
+
+      <div class="show-password-toggle">
+        <input type="checkbox" id="show-password" />
+        <label for="show-password">Show Password</label>
+      </div>
+
+      <label for="full-name">Full Name<span class="required">*</span></label>
+      <input type="text" id="full-name" name="full-name" required />
+      <span class="input-feedback" id="full-name-feedback"></span>
+
+      <label for="phone-number">Phone Number<span class="required">*</span></label>
+      <input type="tel" id="phone-number" name="phone-number" required />
+      <span class="input-feedback" id="phone-number-feedback"></span>
+
+      <label for="email">Email<span class="required">*</span></label>
+      <input type="email" id="email" name="email" required />
+      <span class="input-feedback" id="email-feedback"></span>
+
+      <button type="submit" class="btn-primary" aria-busy="false" aria-live="polite"> <span class="spinner hidden"
+          id="spinner" aria-hidden="true" role="status"></span><span id="submit-label">Submit</span></button>
+    </form>
+  </main>
+  <script src="./assets/js/inputValidation.js" defer></script>
+  <script src="./assets/js/uiHandler.js" defer></script>
+  <script src="./assets/js/submitHandler.js" defer></script>
+
+</body>
+
+</html>

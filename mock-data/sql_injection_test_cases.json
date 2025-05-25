@@ -1,0 +1,42 @@
+[
+  {
+    "accountType": "individual",
+    "username": "admin' --",
+    "password": "Password123!",
+    "fullName": "Test User",
+    "phoneNumber": "+1234567890",
+    "email": "inject1@example.com"
+  },
+  {
+    "accountType": "individual",
+    "username": "admin'; DROP TABLE users; --",
+    "password": "Password123!",
+    "fullName": "Malicious",
+    "phoneNumber": "+1234567890",
+    "email": "inject2@example.com"
+  },
+  {
+    "accountType": "individual",
+    "username": "' OR '1'='1",
+    "password": "Password123!",
+    "fullName": "Hacker",
+    "phoneNumber": "+1234567890",
+    "email": "inject3@example.com"
+  },
+  {
+    "accountType": "individual",
+    "username": "test'; UPDATE users SET password='hacked' WHERE username='admin'; --",
+    "password": "Password123!",
+    "fullName": "Evil Script",
+    "phoneNumber": "+1234567890",
+    "email": "inject4@example.com"
+  },
+  {
+    "accountType": "individual",
+    "username": "anything'); EXEC xp_cmdshell('whoami'); --",
+    "password": "Password123!",
+    "fullName": "Shell Exec",
+    "phoneNumber": "+1234567890",
+    "email": "inject5@example.com"
+  }
+]

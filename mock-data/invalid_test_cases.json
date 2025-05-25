@@ -1,0 +1,53 @@
+[
+  {
+    "accountType": "invalidType",
+    "username": "invalid1",
+    "password": "Strong#Pass1",
+    "fullName": "Invalid User",
+    "phoneNumber": "+1234567890",
+    "email": "invalid@example.com"
+  },
+  {
+    "accountType": "individual",
+    "username": "a!",
+    "password": "weak",
+    "fullName": "1",
+    "phoneNumber": "not-a-number",
+    "email": "not-an-email"
+  },
+  {
+    "accountType": "company",
+    "username": "user123",
+    "password": "NoSymb0ls",
+    "fullName": "John O'Brien",
+    "phoneNumber": "+111-222-333",
+    "email": "john@company.com",
+    "personTitle": "!"
+  },
+  {
+    "accountType": "company",
+    "username": "",
+    "password": "",
+    "fullName": "",
+    "phoneNumber": "",
+    "email": "",
+    "personTitle": ""
+  },
+  {
+    "accountType": "individual",
+    "username": "short",
+    "password": "Aa1!",
+    "fullName": "X",
+    "phoneNumber": "123",
+    "email": "email@.com"
+  },
+  {
+    "accountType": "company",
+    "username": "duplicateuser",
+    "password": "Another#Pass2",
+    "fullName": "Dup Company",
+    "phoneNumber": "+1234567890",
+    "email": "duplicate@example.com",
+    "personTitle": "123"
+  }
+]
