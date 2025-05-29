@@ -55,8 +55,10 @@ function isEmailValidated(value) {
 
 function isPhoneNumberValidated(value) {
   const trimmed = value.trim();
-  const valid = /^\+?[0-9\s\-()]{7,20}$/.test(trimmed);
-  showInputFeedback("phone-number", valid, "Enter a valid phone number.");
+  const digitsOnly = trimmed.replace(/\D/g, "");
+  phoneNumber.value = digitsOnly;
+  const valid = digitsOnly.length >= 7 && digitsOnly.length <= 20;
+  showInputFeedback("phone-number", valid, "Phone number should be 7-20 long");
   return valid;
 }
 

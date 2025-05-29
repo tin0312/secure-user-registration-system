@@ -43,7 +43,7 @@ function validateInput(array $data): array
         $errors['email'] = 'Invalid email format.';
     }
 
-    if (!preg_match('/^\+?[0-9\s\-()]{7,20}$/', $phoneNumber)) {
+    if (preg_match('/\D/', $phoneNumber) || strlen($phoneNumber) < 7 || strlen($phoneNumber) > 20) {
         $errors['phoneNumber'] = 'Invalid phone number format.';
     }
 

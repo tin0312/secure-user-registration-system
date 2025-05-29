@@ -8,7 +8,7 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL, -- store hashed password, 255 length is good for bcrypt
     full_name VARCHAR(255) NOT NULL, -- should be required as this acts as an ID of a person
     person_title VARCHAR(100) DEFAULT NULL,
-    phone_number VARCHAR(15) NOT NULL UNIQUE, -- allows +, -, spaces if needed
+    phone_number VARCHAR(20) NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL UNIQUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

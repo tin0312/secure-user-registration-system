@@ -90,7 +90,24 @@ passwordInput.addEventListener("input", () =>
 username.addEventListener("input", () => isUsernameValidated(username.value));
 email.addEventListener("input", () => isEmailValidated(email.value));
 phoneNumber.addEventListener("input", () => isPhoneNumberValidated(phoneNumber.value));
+phoneNumber.addEventListener("blur", () => {
+    phoneNumber.value = formatPhoneNumber(phoneNumber.value)
+})
 fullNameInput.addEventListener("input", () => isFullNameValidated(fullNameInput.value));
+
+
+function formatPhoneNumber(phoneNumber) {
+    const digits = phoneNumber.replace(/\D/g, "");
+    const area = digits.slice(0, 3);
+    const rest = digits.slice(3);
+    if (digits.length === 10) {
+        const part1 = rest.slice(0, 3);
+        const part2 = rest.slice(3, 7);
+        return `(${area}) ${part1}-${part2}`
+    }
+    return digits
+}
+
 
 function isAllInputsValid() {
     return (
