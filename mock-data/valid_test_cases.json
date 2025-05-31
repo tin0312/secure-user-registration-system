@@ -4,7 +4,7 @@
     "username": "validuser1",
     "password": "Strong#Pass1",
     "fullName": "John Doe",
-    "phoneNumber": "+1234567890",
+    "phoneNumber": "1234567890",
     "email": "john.doe@example.com",
     "personTitle": ""
   },
@@ -13,7 +13,7 @@
     "username": "company123",
     "password": "Secure!Pass2",
     "fullName": "Acme Corp",
-    "phoneNumber": "+1987654321",
+    "phoneNumber": "1987654321",
     "email": "contact@acmecorp.com",
     "personTitle": "Director"
   }

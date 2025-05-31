@@ -49,5 +49,14 @@
     "phoneNumber": "+1234567890",
     "email": "duplicate@example.com",
     "personTitle": "123"
+  },
+   {
+    "accountType": "company",
+    "username": "duplicateuser",
+    "password": "Another#Pass2",
+    "fullName": "Dup Company",
+    "phoneNumber": "+1234567890",
+    "email": "duplicate@example.com",
+    "personTitle": "123"
   }
 ]

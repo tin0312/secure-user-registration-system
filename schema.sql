@@ -16,8 +16,9 @@ CREATE TABLE users (
 -- centralized logging for bad requests
 CREATE TABLE rate_limit_attempts (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    ip VARCHAR(45) NOT NULL,
-    attempt_time INT NOT NULL  -- Unix timestamp
+    ip VARCHAR(45) NOT NULL UNIQUE,
+    attempt_count INT NOT NULL,
+    last_attempt_time INT NOT NULL
 );
 
 -- schedule event that is enabled by hosting platfrom using mySQL

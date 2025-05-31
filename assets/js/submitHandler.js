@@ -5,7 +5,6 @@ const submitLabel = document.getElementById("submit-label");
 const formMessage = document.getElementById("form-message");
 
 function setSubmitting(isSubmitting) {
-  console.log("Input fields after submitted", fields);
   submitBtn.disabled = true;
   submitBtn.setAttribute("aria-busy", isSubmitting ? "true" : "false");
   spinner.classList.toggle("hidden", !isSubmitting);
