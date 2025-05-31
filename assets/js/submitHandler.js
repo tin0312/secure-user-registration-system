@@ -5,7 +5,8 @@ const submitLabel = document.getElementById("submit-label");
 const formMessage = document.getElementById("form-message");
 
 function setSubmitting(isSubmitting) {
-  submitBtn.disabled = isSubmitting;
+  console.log("Input fields after submitted", fields);
+  submitBtn.disabled = true;
   submitBtn.setAttribute("aria-busy", isSubmitting ? "true" : "false");
   spinner.classList.toggle("hidden", !isSubmitting);
   submitLabel.textContent = isSubmitting ? "Submitting..." : "Submit";
@@ -36,11 +37,6 @@ async function sendRegistration(data) {
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  if (!isAllInputsValid()) {
-    showMessage("❌ Please correct the highlighted fields before submitting.", "error");
-    return;
-  }
-
   setSubmitting(true);
   try {
     const result = await sendRegistration(collectFormData());
@@ -54,6 +50,8 @@ form.addEventListener("submit", async (e) => {
     togglePersonTitle("individual");
     resetChecklist();
   } finally {
+    resetFields()
     setSubmitting(false);
+    updateSubmitBtnState()
   }
 });

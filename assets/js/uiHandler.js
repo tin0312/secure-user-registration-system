@@ -29,6 +29,21 @@ personTitleInput.setAttribute("required", "");
 personTitleInput.classList.add("form-control");
 personTitleFeedback.setAttribute("id", "person-title-feedback");
 
+const fields = {
+  "full-name": false,
+  "username": false,
+  "email": false,
+  "phone-number": false,
+  "password": false,
+  "confirm-password": false
+};
+
+function resetFields() {
+  Object.keys(fields).forEach(key => {
+    fields[key] = false;
+  });
+}
+
 function updateFullNameLabel(accountType) {
     fullNameLabel.textContent = accountType === "company" ? "Contact Name" : "Full Name";
     const existing = fullNameLabel.querySelector(".required");
@@ -42,21 +57,28 @@ function togglePersonTitle(accountType) {
             fullNameFeedback.insertAdjacentElement("afterend", personTitleLabel);
             personTitleLabel.insertAdjacentElement("afterend", personTitleInput);
             personTitleInput.insertAdjacentElement("afterend", personTitleFeedback);
-            personTitleInput.addEventListener("input", () => validatePersonTitle(personTitleInput.value));
+            personTitleInput.addEventListener("input", () => isPersonTitleValidated(personTitleInput.value));
         }
+        fields["person-title"] = false;
     } else {
         personTitleLabel.remove();
         personTitleInput.remove();
         personTitleFeedback.remove();
+        delete fields["person-title"];
     }
+    updateSubmitBtnState()
 }
 
 function isPasswordMatched() {
-    const valid = passwordInput.value === confirmPasswordInput.value;
-    confirmPasswordFeedback.textContent = valid ? "" : "Passwords do not match.";
-    confirmPasswordFeedback.classList.toggle("text-error", !valid);
-    confirmPasswordInput.classList.toggle("input-error", !valid);
-    return valid;
+    const isValid = passwordInput.value === confirmPasswordInput.value;
+    confirmPasswordFeedback.textContent = isValid ? "" : "Passwords do not match.";
+    confirmPasswordFeedback.classList.toggle("text-error", !isValid);
+    confirmPasswordInput.classList.toggle("input-error", !isValid);
+    if (fields["confirm-password"] !== isValid) {
+    fields["confirm-password"] = isValid;
+    updateSubmitBtnState();
+  }
+    return isValid;
 }
 
 function resetChecklist() {
@@ -108,24 +130,19 @@ function formatPhoneNumber(phoneNumber) {
     return digits
 }
 
-
-function isAllInputsValid() {
-    return (
-        isPasswordMatched() &&
-        isUsernameValidated(username.value) &&
-        isEmailValidated(email.value) &&
-        isPhoneNumberValidated(phoneNumber.value) &&
-        isFullNameValidated(fullNameInput.value) &&
-        isPasswordValid(passwordInput.value) &&
-        (accountTypes.value === "company" ? validatePersonTitle(personTitleInput?.value || "") : true)
-    );
+function updateSubmitBtnState() {
+  const allValid = Object.values(fields).every(Boolean);
+  const submitButton = document.querySelector("button[type='submit']");
+  submitButton.disabled = !allValid;
+  submitButton.setAttribute("aria-disabled", !allValid);
 }
+
 
 function collectFormData() {
     const data = {
         username: username.value.trim(),
         email: email.value.trim(),
-        phoneNumber: phoneNumber.value.trim(),
+        phoneNumber: phoneNumber.value.trim().replace(/\D/g, ''),
         accountType: accountTypes.value,
         fullName: fullNameInput.value.trim(),
         password: passwordInput.value.trim()
